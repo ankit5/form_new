@@ -1,0 +1,12 @@
+name: AnotherTheme
+type: theme
+description: 'My Awesome theme'
+base theme: classy
+package: PackageName
+core_version_requirement: ^9.4 || ^10
+libraries:
+  - anothertheme/global-styling
+
+regions:
+  header: header
+  content: content
