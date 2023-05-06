@@ -18,6 +18,23 @@ use Drupal\Core\Form\FormStateInterface;
     }
   }
 }*/
+/**
+ * Implements hook_page_attachments_alter
+ */
+function anothertheme_page_attachments_alter(array &$page) {
+  // Get current path
+  $route = \Drupal::routeMatch()->getRouteName();
+  //print $route;
+  $path = \Drupal::service('path.current')->getPath();
+  $arg  = explode('/',$path);
+//print_r($arg);
+  // If we're on the node listing page, add our simple library.
+  if ($arg[1] == 'user') {
+   // $page['#attached']['library'][] = 'claro/global-styling';
+  }
+}
+
+
 
 function anothertheme_form_node_admission_form_alter(&$form, FormStateInterface $form_state, $form_id) {
 
@@ -41,7 +58,7 @@ function anothertheme_preprocess_html(array &$variables) {
 /**
  * Implements hook_page_attachments_alter().
  */
-function anothertheme_page_attachments_alter(array &$page) {
+function anothertheme_page_attachments_alter2(array &$page) {
   // Tell IE to use latest rendering engine (not to use compatibility mode).
   /*$ie_edge = [
     '#type' => 'html_tag',

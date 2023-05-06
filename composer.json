@@ -23,6 +23,7 @@
         "drupal/core-project-message": "^9.5",
         "drupal/core-recommended": "^9.5",
         "drupal/core-vendor-hardening": "^9.5",
+        "drupal/disable_user_view": "^2.0",
         "drupal/email_registration": "^1.2",
         "drupal/field_group": "^3.4",
         "drupal/gin_login": "^2.0",

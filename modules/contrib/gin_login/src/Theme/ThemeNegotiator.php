@@ -72,7 +72,8 @@ class ThemeNegotiator implements ThemeNegotiatorInterface {
     if (
         $route_match->getRouteName() == 'user.login' ||
         $route_match->getRouteName() == 'user.pass' ||
-        $route_match->getRouteName() == 'user.register'
+        $route_match->getRouteName() == 'user.register' ||
+        $route_match->getRouteName() == 'entity.user.edit_form'
       ) {
       return $this->configFactory->get('system.theme')->get('admin');
     }

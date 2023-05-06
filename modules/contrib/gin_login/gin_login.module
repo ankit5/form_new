@@ -17,6 +17,7 @@ function gin_login_page_attachments_alter(&$page) {
     $configData = $config->get();
 
     if (_gin_login_gin_is_active()) {
+      print "sdff";
       // Get Gin settings.
       /** @var \Drupal\gin\GinSettings $settings */
       $settings = \Drupal::classResolver(GinSettings::class);
@@ -95,7 +96,8 @@ function gin_login_preprocess_html(&$variables) {
  */
 function gin_login_form_alter(&$form, $form_state, $form_id) {
   // User form (Login, Register or Forgot password)
-  if (strpos($form_id, 'user_login') !== FALSE || strpos($form_id, 'user_register') !== FALSE || in_array($form_id, ['user_pass'])) {
+  //print $form_id;
+  if (strpos($form_id, 'user_login') !== FALSE || strpos($form_id, 'user_register') !== FALSE || strpos($form_id, 'user') !== FALSE || in_array($form_id, ['user_pass'])) {
     $form['actions']['submit']['#attributes']['class'][] = 'button--primary';
   }
 
@@ -115,8 +117,10 @@ function gin_login_form_alter(&$form, $form_state, $form_id) {
     ];
 
     // Register button.
-    $register_url = Url::fromRoute('user.register');
+    $register_url = Url::fromRoute('user.register',array('destination' => 'application-form-for-admission'));
+
     if ($register_url->access()) {
+
       $form['more-links']['register_button'] = [
         '#type' => 'link',
         '#url' => $register_url,
@@ -163,6 +167,10 @@ function gin_login_theme() {
   ];
   $theme['page__user__register'] = [
     'template' => 'page--user--register',
+    'preprocess functions' => ['gin_login_preprocess_ginlogin'],
+  ];
+   $theme['page__user__edit'] = [
+    'template' => 'page--user--edit',
     'preprocess functions' => ['gin_login_preprocess_ginlogin'],
   ];
 
@@ -219,7 +227,8 @@ function _gin_login__check_path() {
   if (
     $route == 'user.login' ||
     $route == 'user.pass' ||
-    $route == 'user.register'
+    $route == 'user.register' ||
+    $route == 'entity.user.edit_form'
   ) {
     return TRUE;
   }
@@ -239,9 +248,10 @@ function _gin_login_gin_is_active() {
 
   // Check if base themes are set.
   if (isset($theme_handler[$frontend_theme_name]->base_themes)) {
+
     $frontend_base_themes = $theme_handler[$frontend_theme_name]->base_themes;
   }
-
+ 
   // Add theme name to base theme array.
   $frontend_base_themes[$frontend_theme_name] = $frontend_theme_name;
 
@@ -250,14 +260,17 @@ function _gin_login_gin_is_active() {
 
   // Admin theme will have no value if is set to use the default theme.
   if ($admin_theme_name) {
+
     $admin_base_themes = isset($theme_handler[$admin_theme_name]->base_themes) ? $theme_handler[$admin_theme_name]->base_themes : [];
     $admin_base_themes[$admin_theme_name] = $admin_theme_name;
+
   }
   else {
     $admin_base_themes = $frontend_base_themes;
   }
 
   $gin_activated = array_key_exists('gin', $admin_base_themes);
-
+//print_r($gin_activated);
+ // var_dump($gin_activated);
   return $gin_activated;
 }

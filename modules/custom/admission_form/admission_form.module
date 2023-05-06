@@ -5,7 +5,21 @@ use Drupal\Core\Form\FormStateInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Drupal\file\FileInterface;
 
+function admission_form_form_alter(&$form, FormStateInterface $form_state, $form_id)
+{
+  if ($form_id == 'user_register_form') {
+     $form['actions']['submit']['#submit'][] = '_form_submit_register';
+  }
+  
+}
 
+function _form_submit_register(&$form, FormStateInterface $form_state)
+{
+  \Drupal::service('messenger')->addMessage("Please fill the application form.");
+/*$url = Url::fromUserInput('/application-form-for-admission', [], ['absolute' => 'true']);
+     $response = new RedirectResponse($url->toString());
+      $response->send();*/
+}
 
 /**
  * Implements hook_form_FORM_ID_alter().
@@ -170,7 +184,17 @@ function admission_form_theme($existing, $type, $theme, $path) {
   );
 }
 
-
+/**
+ * Implements hook_mail_alter().
+ *
+ * Don't send any mail during registration.
+ */
+function admission_form_mail_alter(&$message) {
+  if ($message['id'] == 'user_register_no_approval_required' && $message['key'] == 'register_no_approval_required') {
+      $message['send'] = FALSE;
+      return;
+  }
+}
 
 /**
  * Implements hook_preprocess().
