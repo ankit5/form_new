@@ -104,7 +104,7 @@ function gin_login_form_alter(&$form, $form_state, $form_id) {
   // Adding button/links to Register and Forgot password.
   if (strpos($form_id, 'user_login') !== FALSE) {
     // Move actions before new elements.
-    $form['actions']['#weight'] = '98';
+    $form['actions']['#weight'] = '99';
 
     // Add new class to submit button.
     $form['actions']['submit']['#attributes']['class'][] = 'button-login';

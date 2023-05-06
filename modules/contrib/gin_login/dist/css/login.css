@@ -212,7 +212,8 @@ body.gin-login .user-form-page .form-type--email input {
 }
 body.gin-login .user-form-page .form-element {
   width: 100%;
-  padding: 1rem;
+    padding: 0px;
+    min-height: 40px;
 }
 body.gin-login .user-form-page .more-links {
   display: flex;
