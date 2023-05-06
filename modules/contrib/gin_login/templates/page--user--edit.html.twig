@@ -62,7 +62,14 @@
       <main class="page-content clearfix" role="main">
         <div class="visually-hidden"><a id="main-content" tabindex="-1"></a></div>
         {% block title %}
+        <div style="display: inline-flex;
+    width: 100%;">
          <h1 class="page-title user-form-page__page-title">{{ 'My Account'|t }}</h1>
+         <div style="    margin-left: 76px;
+    width: 100%;
+    margin-bottom: -31px;
+    margin-top: -17px;"><a href="/application-form-for-admission" class="button--primary button" style="">Application Form</a> </div>
+         </div>
         {% endblock %}
         {{ page.highlighted }}
         {% if page.help %}
