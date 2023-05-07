@@ -39,11 +39,18 @@
  * @see html.html.twig
  */
 #}
+<style>
+@media (min-width:1025px) {
+.logout {
+position: absolute;
+    top: 15px;
+    }
+    }
+</style>
 <div class="user-form-page">
   <div class="user-form-page__user-form">
     <header class="content-header clearfix">
-    <div><a href="/user/logout" class="button--primary button" style="position: absolute;
-    top: 0px;">Log Out</a> </div>
+    <div><a href="/user/logout" class="button--primary button logout" style="">Log Out</a> </div>
       <div class="layout-container">
         {% if icon_default == false and icon_path != '' %}
           <a href="{{ path('<front>') }}" class="toolbar-logo" data-drupal-link-system-path="<front>">
