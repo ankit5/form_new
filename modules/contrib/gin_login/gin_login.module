@@ -189,6 +189,11 @@ function gin_login_preprocess_ginlogin(&$variables) {
   $darkmode = theme_get_setting('enable_darkmode', $theme);
   $fileUrlGenerator = \Drupal::service('file_url_generator');
 
+   $roles = \Drupal::currentUser()->getRoles();
+
+  
+$variables['roles'] = $roles;
+
   // #3258015: Make sure we're compatible with the new variant.
   if ($themeUseDefaultIcon === NULL) {
     $themeIconPath = theme_get_setting('logo.path', $theme);
@@ -216,6 +221,8 @@ function gin_login_preprocess_ginlogin(&$variables) {
     $variables['brand_image'] = '';
   }
 }
+
+
 
 /**
  * Helper function to check if we're on the right paths.

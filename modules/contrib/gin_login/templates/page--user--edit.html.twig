@@ -46,11 +46,16 @@ display:none !important;
     }
     }
 </style>
+
 <div class="user-form-page">
   <div class="user-form-page__user-form">
     <header class="content-header clearfix">
+   
+    {% set role = 'colart' %}
+    {% if role not in roles %}
     <div><a href="/user/logout" class="button--primary button logout" style="position: absolute;
     top: 15px;">Log Out</a> </div>
+    {% endif %}
       <div class="layout-container">
         {% if icon_default == false and icon_path != '' %}
           <a href="{{ path('<front>') }}" class="toolbar-logo" data-drupal-link-system-path="<front>">
