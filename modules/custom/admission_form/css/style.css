@@ -117,6 +117,9 @@ input[value="Remove"] {
     right: 15px;
     top: 51px;
  }
+  input[name="field_examination_examination_add_more"]{
+    width: 327px;
+  }
 .form-managed-file:after{
      content: "x";
     pointer-events: none;
