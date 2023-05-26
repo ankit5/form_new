@@ -6,6 +6,7 @@ $settings['locale_custom_strings_en'][''] = array(
   'Create new account' => 'Register',
   'A valid email address. All emails from the system will be sent to this address. The email address is not made public and will only be used if you wish to receive a new password or wish to receive certain news or notifications by email.' => 'Enter a valid email address'
 );
+$config['ip_whitelist'] = ['164.100.57.2'];
 // phpcs:ignoreFile
 
 /**
@@ -853,7 +854,7 @@ $databases['default']['default'] = array (
   'database' => 'ankitver_form_new',
   'username' => 'ankitver_drupal',
   'password' => '8y{a(o-IrhQ~',
-  'prefix' => '',
+  'prefix' => ''
   'host' => 'localhost',
   'port' => '3306',
   'namespace' => 'Drupal\\mysql\\Driver\\Database\\mysql',
