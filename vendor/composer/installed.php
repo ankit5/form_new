@@ -3,7 +3,7 @@
         'name' => 'drupal/legacy-project',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => 'f4f9c25512db7e27d1190308643206b412dfb38f',
+        'reference' => 'ecc198a70846df65efc27d2b1a47966301d88262',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -349,6 +349,15 @@
             'aliases' => array(),
             'dev_requirement' => false,
         ),
+        'drupal/flood_control' => array(
+            'pretty_version' => '2.3.2',
+            'version' => '2.3.2.0',
+            'reference' => '2.3.2',
+            'type' => 'drupal-module',
+            'install_path' => __DIR__ . '/../../modules/contrib/flood_control',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
         'drupal/gin_login' => array(
             'pretty_version' => '2.0.2',
             'version' => '2.0.2.0',
@@ -361,7 +370,7 @@
         'drupal/legacy-project' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => 'f4f9c25512db7e27d1190308643206b412dfb38f',
+            'reference' => 'ecc198a70846df65efc27d2b1a47966301d88262',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

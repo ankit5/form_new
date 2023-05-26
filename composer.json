@@ -27,6 +27,7 @@
         "drupal/disable_user_view": "^2.0",
         "drupal/email_registration": "^1.2",
         "drupal/field_group": "^3.4",
+        "drupal/flood_control": "^2.3",
         "drupal/gin_login": "^2.0",
         "drupal/paragraphs": "^1.15",
         "drupal/pathauto": "^1.11",
