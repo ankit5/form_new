@@ -1,12 +1,13 @@
 <?php
 $config['system.logging']['error_level'] = 'verbose';
+$config['ip_whitelist'] = ['164.100.57.2'];
 // @codingStandardsIgnoreFile
 $settings['locale_custom_strings_en'][''] = array(
   'Back to content editing' => 'Close Preview',
   'Create new account' => 'Register',
   'A valid email address. All emails from the system will be sent to this address. The email address is not made public and will only be used if you wish to receive a new password or wish to receive certain news or notifications by email.' => 'Enter a valid email address'
 );
-$config['ip_whitelist'] = ['164.100.57.2'];
+
 // phpcs:ignoreFile
 
 /**
@@ -839,6 +840,11 @@ $settings['migrate_node_migrate_type_classic'] = FALSE;
 # if (file_exists($app_root . '/' . $site_path . '/settings.local.php')) {
 #   include $app_root . '/' . $site_path . '/settings.local.php';
 # }
+$settings['trusted_host_patterns'] = array(
+  '^techto/.life$',
+  '^form\.techto\.life$',
+
+);
 /*$databases['default']['default'] = array (
   'database' => 'colart_new',
   'username' => 'root',
@@ -849,12 +855,12 @@ $settings['migrate_node_migrate_type_classic'] = FALSE;
   'namespace' => 'Drupal\\mysql\\Driver\\Database\\mysql',
   'driver' => 'mysql',
   'autoload' => 'core/modules/mysql/src/Driver/Database/mysql/',
-);*/
-$databases['default']['default'] = array (
+);
+*/$databases['default']['default'] = array (
   'database' => 'ankitver_form_new',
   'username' => 'ankitver_drupal',
   'password' => '8y{a(o-IrhQ~',
-  'prefix' => ''
+  'prefix' => '',
   'host' => 'localhost',
   'port' => '3306',
   'namespace' => 'Drupal\\mysql\\Driver\\Database\\mysql',
