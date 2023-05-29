@@ -205,4 +205,5 @@ AddEncoding gzip svgz
   Header set Pragma "no-cache"
   Header set Expires 0
   Header always unset X-Powered-By
+  Header always unset Server
 </IfModule>
