@@ -71,9 +71,6 @@ AddEncoding gzip svgz
 
   RewriteEngine on
 
-RewriteCond %{QUERY_STRING} PHP[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12} [NC]
-RewriteRule .* - [F]
-
   # NEW CODE HERE #
    RewriteCond %{HTTPS} off
    RewriteCond %{HTTP:X-Forwarded-Proto} !https
@@ -207,4 +204,5 @@ RewriteRule .* - [F]
   Header set Cache-Control "no-cache, no-store, must-revalidate"
   Header set Pragma "no-cache"
   Header set Expires 0
+  Header always unset X-Powered-By
 </IfModule>
