@@ -190,5 +190,5 @@ AddEncoding gzip svgz
   Header always set X-Content-Type-Options nosniff
   # Disable Proxy header, since it's an attack vector.
   RequestHeader unset Proxy
-  Header edit Set-Cookie ^(.*)$ $1;HttpOnly;Secure;SameSite=strict
+  Header set Set-Cookie HttpOnly;Secure;SameSite=Strict
 </IfModule>
