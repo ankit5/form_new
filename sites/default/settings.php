@@ -1,6 +1,7 @@
 <?php
 $config['system.logging']['error_level'] = 'verbose';
 $config['ip_whitelist'] = ['164.100.57.2'];
+$config['user.settings']['password_reset_timeout'] = 1800;
 // @codingStandardsIgnoreFile
 $settings['locale_custom_strings_en'][''] = array(
   'Back to content editing' => 'Close Preview',
