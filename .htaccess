@@ -197,11 +197,19 @@ AddEncoding gzip svgz
   
   Header set X-XSS-Protection "1; mode=block"
   Header set Set-Cookie HttpOnly;Secure;SameSite=Strict
+
+  Header always unset X-Frame-Options
   Header set X-Frame-Options "SAMEORIGIN"
+
+  Header always unset X-Content-Type-Options
   Header set X-Content-Type-Options "nosniff"
+
   Header set Content-Security-Policy "font-src *;img-src * data:;"
+
   Header always unset Cache-Control
   Header set Cache-Control "no-cache, no-store, must-revalidate"
+
+  Header always unset Pragma
   Header set Pragma "no-cache"
   Header set Expires 0
   Header always unset X-Powered-By
