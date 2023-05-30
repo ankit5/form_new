@@ -191,7 +191,7 @@ AddEncoding gzip svgz
 # Various header fixes.
 <IfModule mod_headers.c>
   # Disable content sniffing, since it's an attack vector.
-  Header always set X-Content-Type-Options nosniff
+  #Header always set X-Content-Type-Options nosniff
   # Disable Proxy header, since it's an attack vector.
   RequestHeader unset Proxy
   
@@ -199,13 +199,12 @@ AddEncoding gzip svgz
   Header set Set-Cookie HttpOnly;Secure;SameSite=Strict
   Header set X-Frame-Options "SAMEORIGIN"
   Header set X-Content-Type-Options "nosniff"
-  Header always set Strict-Transport-Security "max-age=63072000; includeSubDomains"
   Header set Content-Security-Policy "font-src *;img-src * data:;"
+  Header always unset Cache-Control
   Header set Cache-Control "no-cache, no-store, must-revalidate"
   Header set Pragma "no-cache"
   Header set Expires 0
   Header always unset X-Powered-By
-  Header always unset Server
   Header set Referrer-Policy "same-origin"
   Header always set Permissions-Policy "geolocation=(),midi=(),sync-xhr=(),microphone=(),camera=(),magnetometer=(),gyroscope=(),fullscreen=(self),payment=()"
   Header set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
