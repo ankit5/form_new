@@ -56,16 +56,34 @@ function admission_form_form_node_admission_form_alter(&$form, FormStateInterfac
    $form['field_category_certificate']['widget'][0]['#upload_validators']['_validate_file'] = [];
    $form['field_annual_income_certificate']['widget'][0]['#upload_validators']['_validate_file'] = [];
    $form['field_date_of_birth_certificate']['widget'][0]['#upload_validators']['_validate_file'] = [];
-    $form['field_date_of_birth_certificate']['widget'][0]['#upload_validators']['field_payment_recipe'] = [];
+    $form['field_payment_recipe']['widget'][0]['#upload_validators']['_validate_file'] = [];
+    $form['field_examination']['widget'][0]['subform']['field_certificate']['widget'][0]['#upload_validators']['_validate_file'] = [];
    
 }
 
 function _validate_file(FileInterface $file) {
   $errors = [];
   $size = $file->getSize();
+  /* $errors[] = $file->getFileUri();
+    return $errors;*/
+  $finfo = finfo_open(FILEINFO_MIME_TYPE);
+$mime = finfo_file($finfo, $file->getFileUri());
+
+ // return $file->getMimeType();
+ /* $errors[] = $file->getMimeType();
+  return $errors;*/
   if($size < 100000){
- $errors[] = t($size."Minimum file size 100 KB is required.");
+ $errors[] = t("Minimum file size 100 KB is required.");
 }
+if(substr_count($file->getFilename(), '.') > 1){
+   $errors[] = t("Double extension is not allowed");
+}
+ $allowed = array('application/pdf');
+ if(in_array($mime, $allowed)){
+
+ }else {
+    $errors[] = t("The file is invalid or type is not allowed. Allowed types: pdf");
+ }
  
   return $errors;
 }
@@ -75,7 +93,9 @@ function _validate_file(FileInterface $file) {
  */
 function admission_form_field_widget_form_alter(&$element, FormStateInterface &$form_state, $context) {
   if (isset($element['#field_name']) && ($element['#field_name'] == 'field_category_certificate' || $element['#field_name'] == 'field_annual_income_certificate' || $element['#field_name'] == 'field_date_of_birth_certificate' || $element['#field_name'] =='field_certificate' || $element['#field_name'] =='field_payment_recipe'))
-
+/*if (isset($element['#field_name']) && ($element['#field_name'] == 'field_certificate')){
+ $element['subform']["field_certificate"]['widget'][0]['#upload_validators']['_validate_file'] = [];
+}*/
    {
       // Add process callback to change field description.
       $element['#process'][] = '_change_description';
