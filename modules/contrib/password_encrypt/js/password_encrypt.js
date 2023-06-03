@@ -3,7 +3,7 @@
 	// This function is strict.
   Drupal.behaviors.password_encrypt = {
     attach: function (context, settings) {
-      var passkey = drupalSettings.password_encrypt.passkey;
+      var passkey = '611e8a277a88c25ecolart';
       var cipher;
       var pass;
       var cpass;
