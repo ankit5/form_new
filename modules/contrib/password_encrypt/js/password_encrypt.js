@@ -17,7 +17,7 @@
         }
       });
 
-      $('form.user-register-form, form.user-form', context).submit(function (event) {
+      $('form.user-register-form', context).submit(function (event) {
         current_pass = $('#edit-current-pass').val();
         pass = $('#edit-pass-pass1').val();
         cpass = $('#edit-pass-pass2').val();
