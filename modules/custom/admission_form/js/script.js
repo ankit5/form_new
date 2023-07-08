@@ -4,6 +4,8 @@
    $(item).attr('accept', 'image/*;capture=camera');
 });
 
+ $("#edit-field-a-course-type option[value='MFA-ADFA']").remove();
+
  if(performance.navigation.type == 2){
    location.reload(true);
 }
